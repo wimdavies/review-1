@@ -17,5 +17,28 @@ Return value:
 
 "Green,,Green,Red," =>	"Green: 2\nRed: 1"
 
-  
+If not in the input, should not appear in the output.
+Output order is always green-amber-red
 
+Test case examples:
+
+```ruby
+'' => 'No results have been given'
+
+'Green' => 'Green: 1'
+'Amber' => 'Amber: 1'
+'Red' => 'Red: 1'
+
+'Green, Amber, Red' => "Green: 1\nAmber: 1\nRed: 1"
+# out-of-order:
+'Amber, Green, Red' => "Green: 1\nAmber: 1\nRed: 1"
+# original
+"Green, Green, Amber, Red, Green" => "Green: 3\nAmber: 1\nRed: 1"
+#mixedcase
+'green,green,AMBER,red,Red' => "Green: 2\nAmber: 1\Red: 2"
+# where separated by multiple commas, no spaces
+"Green,,Green,Red," => "Green: 2\nRed: 1"
+# account for whitespace
+'    Red    ' => "Red: 1"
+
+```
